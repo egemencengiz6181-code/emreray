@@ -10,7 +10,7 @@ import { cities, projectPlaces } from "../data/geo";
 import type { Project } from "../data/types";
 import { useContent } from "../i18n/content";
 import { useI18n } from "../i18n/useLang";
-import { formatDate } from "../lib/format";
+import { formatDate, thumb } from "../lib/format";
 import { useTitle } from "../lib/useTitle";
 
 export default function Home() {
@@ -65,6 +65,19 @@ function Hero() {
       setPlaying(false);
     }
   };
+
+  // Kart görsellerini ilk hover'dan önce indirip çöz; böylece açılırken takılma olmaz.
+  useEffect(() => {
+    const run = () =>
+      services.slice(0, 4).forEach((s) => {
+        const img = new Image();
+        img.src = thumb(s.hero);
+        img.decode?.().catch(() => {});
+      });
+    const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
+    if (w.requestIdleCallback) w.requestIdleCallback(run);
+    else setTimeout(run, 1200);
+  }, [services]);
 
   const [l1, l2, l3] = t.home.title;
 
@@ -131,7 +144,9 @@ function Hero() {
               transition={{ duration: 0.9, ease, delay: 1.1 + i * 0.08 }}
             >
               <Link to={L.service(s.slug)} className="hero-box">
-                <span className="hero-box__img" style={{ backgroundImage: `url(${s.hero})` }} />
+                <span className="hero-box__img" aria-hidden>
+                  <img src={thumb(s.hero)} alt="" decoding="async" draggable={false} />
+                </span>
                 <div className="hero-box__top">
                   <span className="hero-box__no num">{s.no}</span>
                   <ArrowUpRight className="hero-box__arrow" size={20} />
@@ -308,7 +323,7 @@ function Areas() {
             <Reveal key={s.slug} delay={(i % 3) * 0.08} y={30}>
               <Link to={L.service(s.slug)} className="area">
                 <div className="area__img">
-                  <img src={s.hero} alt="" loading="lazy" />
+                  <img src={thumb(s.hero)} alt="" loading="lazy" decoding="async" />
                 </div>
                 <div className="area__top">
                   <span className="area__icon">

@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useContent } from "../i18n/content";
 import { switchPath } from "../i18n/routes";
 import { useI18n } from "../i18n/useLang";
+import { thumb } from "../lib/format";
 import { ArrowRight, ArrowUp, ChevronDown, Search } from "./Icons";
 import { LogoHorizontal } from "./Logo";
 import { MenuOverlay } from "./MenuOverlay";
@@ -156,9 +157,9 @@ export function Header() {
                         {services.map((s, i) => (
                           <img
                             key={s.slug}
-                            src={s.hero}
+                            src={thumb(s.hero)}
                             alt=""
-                            loading="lazy"
+                            decoding="async"
                             style={{ opacity: i === preview ? 1 : 0, transform: i === preview ? "scale(1)" : "scale(1.06)" }}
                           />
                         ))}

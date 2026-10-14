@@ -20,3 +20,6 @@ export function formatDate(iso: string, lang: Lang = "tr") {
 /** Türkçe karakterleri de doğru küçülterek arama için normalleştirir. */
 export const norm = (s: string) =>
   s.toLocaleLowerCase("tr-TR").replace(/ı/g, "i").normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+/** Faaliyet alanı görsellerinin 720 px'lik küçük sürümü (public/media/thumbs). */
+export const thumb = (src: string) => src.replace("/media/", "/media/thumbs/");

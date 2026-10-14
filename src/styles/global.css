@@ -917,14 +917,23 @@ li:focus-within > .mega {
   isolation: isolate;
   transition: color 0.5s var(--ease);
 }
+/* Açılma efekti yalnızca transform ile: GPU'da çalışır, video üstünde yeniden boyama yapmaz. */
 .hero-box__img {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-size: cover;
-  background-position: center;
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 0.7s var(--ease);
+  overflow: hidden;
+  transform: translate3d(0, 101%, 0);
+  transition: transform 0.7s var(--ease);
+  will-change: transform;
+}
+.hero-box__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(0, -101%, 0) scale(1.12);
+  transition: transform 0.7s var(--ease);
+  will-change: transform;
 }
 .hero-box::before {
   content: "";
@@ -940,8 +949,10 @@ li:focus-within > .mega {
   color: #fff;
 }
 .hero-box:hover .hero-box__img,
-.hero-box:focus-visible .hero-box__img {
-  clip-path: inset(0 0 0 0);
+.hero-box:focus-visible .hero-box__img,
+.hero-box:hover .hero-box__img img,
+.hero-box:focus-visible .hero-box__img img {
+  transform: translate3d(0, 0, 0) scale(1);
 }
 .hero-box:hover::before,
 .hero-box:focus-visible::before {

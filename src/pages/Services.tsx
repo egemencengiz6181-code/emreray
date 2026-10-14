@@ -4,6 +4,7 @@ import { AreaIcon, ArrowRight } from "../components/Icons";
 import { Reveal } from "../components/Motion";
 import { useContent } from "../i18n/content";
 import { useI18n } from "../i18n/useLang";
+import { thumb } from "../lib/format";
 import { useTitle } from "../lib/useTitle";
 
 export default function Services() {
@@ -28,7 +29,7 @@ export default function Services() {
                 <Reveal key={s.slug} delay={(i % 3) * 0.08} y={30}>
                   <Link to={L.service(s.slug)} className="area">
                     <div className="area__img">
-                      <img src={s.hero} alt="" loading="lazy" />
+                      <img src={thumb(s.hero)} alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className="area__top">
                       <span className="area__icon">

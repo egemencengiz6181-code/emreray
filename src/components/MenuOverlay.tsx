@@ -41,7 +41,7 @@ export function MenuOverlay() {
       ],
     },
     { label: t.nav.news, to: L.news(), image: "/media/2024-12-main.webp" },
-    { label: t.nav.contact, to: L.contact(), image: "/media/2025-04-wa-2025-04-11-at-11-39-14.webp" },
+    { label: t.nav.contact, to: L.contact(), image: "/media/2025-04-wa-2025-04-11-at-11-41-08.webp" },
   ];
 
   const activeIdx = Math.max(

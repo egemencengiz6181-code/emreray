@@ -123,11 +123,11 @@ export const services: Service[] = [
       "SVC reaktif güç kompanzasyonu",
       "Trafo merkezi işletmeciliği",
     ],
-    hero: m("2025-04-wa-2025-04-11-at-11-39-14"),
+    hero: m("2025-04-wa-2025-04-11-at-11-26-22"),
     gallery: [
       m("2025-01-htzf5973"),
       m("2025-01-hes-nedir-1024x684-1"),
-      m("2025-04-wa-2025-04-11-at-11-36-14"),
+      m("2025-01-img-20150921-wa0000"),
       m("2025-04-wa-2025-04-11-at-11-41-08"),
     ],
   },

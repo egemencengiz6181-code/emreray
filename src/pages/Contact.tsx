@@ -57,7 +57,7 @@ export default function Contact() {
         eyebrow={t.nav.contact}
         title={c.title}
         lead={c.lead}
-        image="/media/2025-04-wa-2025-04-11-at-11-39-14.webp"
+        image="/media/2025-04-wa-2025-04-11-at-11-41-08.webp"
         crumbs={[{ label: t.nav.contact }]}
         short
       />
