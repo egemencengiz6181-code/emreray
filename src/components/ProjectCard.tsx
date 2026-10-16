@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { cities, projectPlaces } from "../data/geo";
 import type { Project } from "../data/types";
@@ -45,21 +45,32 @@ export function ProjectModal({
   const idx = project ? list.findIndex((x) => x.slug === project.slug) : -1;
   const prev = idx > 0 ? list[idx - 1] : null;
   const next = idx >= 0 && idx < list.length - 1 ? list[idx + 1] : null;
+  const gallery = project?.gallery ?? [];
+  // Açık fotoğraf projeye bağlı tutulur; proje değişince lightbox kendiliğinden kapanır.
+  const [lb, setLb] = useState<{ slug: string; i: number } | null>(null);
+  const photo = lb && lb.slug === project?.slug ? lb.i : null;
+  const setPhoto = (i: number | null) => setLb(i === null || !project ? null : { slug: project.slug, i });
 
+  const open = Boolean(project);
   useEffect(() => {
-    if (!project) return;
+    if (!open) return;
     document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Lightbox açıkken oklar fotoğraflar arasında gezinir, Esc yalnızca lightbox'ı kapatır.
+  useEffect(() => {
+    if (!project || photo !== null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowRight" && next) onChange(next);
       if (e.key === "ArrowLeft" && prev) onChange(prev);
     };
     window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [project, next, prev, onClose, onChange]);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [project, next, prev, onClose, onChange, photo]);
 
   const svc = project ? services.find((s) => s.slug === project.service) : null;
   const places = project ? (projectPlaces[project.slug] ?? []).map((k) => cities[k]?.name).filter(Boolean) : [];
@@ -126,10 +137,28 @@ export function ProjectModal({
                     <dd>{project.metric}</dd>
                   </div>
                 )}
-                {places.length > 0 && (
+                {(project.location || places.length > 0) && (
                   <div>
                     <dt>{t.project.location}</dt>
-                    <dd>{places.join(" — ")}</dd>
+                    <dd>{project.location ?? places.join(" — ")}</dd>
+                  </div>
+                )}
+                {project.employer && (
+                  <div>
+                    <dt>{t.project.employer}</dt>
+                    <dd>{project.employer}</dd>
+                  </div>
+                )}
+                {project.contractor && (
+                  <div>
+                    <dt>{t.project.contractor}</dt>
+                    <dd>{project.contractor}</dd>
+                  </div>
+                )}
+                {project.period && (
+                  <div>
+                    <dt>{t.project.period}</dt>
+                    <dd>{project.period}</dd>
                   </div>
                 )}
                 {svc && (
@@ -143,6 +172,29 @@ export function ProjectModal({
                   </div>
                 )}
               </dl>
+              {gallery.length > 0 && (
+                <div className="pgallery">
+                  <div className="pgallery__head">
+                    <span>{t.project.gallery}</span>
+                    <span className="num muted">
+                      {gallery.length} {t.project.photos}
+                    </span>
+                  </div>
+                  <div className="pgallery__grid">
+                    {gallery.map((g, i) => (
+                      <button
+                        key={g.src}
+                        type="button"
+                        className="pgallery__thumb"
+                        onClick={() => setPhoto(i)}
+                        aria-label={`${t.project.openPhoto}: ${g.caption}`}
+                      >
+                        <img src={g.src} alt={g.caption} loading="lazy" decoding="async" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="modal__nav">
                 <button className="round-btn" disabled={!prev} onClick={() => prev && onChange(prev)} aria-label={t.project.prev}>
                   <ArrowLeft />
@@ -156,6 +208,98 @@ export function ProjectModal({
               </div>
             </div>
           </motion.div>
+          <Lightbox items={gallery} index={photo} onIndex={setPhoto} />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function Lightbox({
+  items,
+  index,
+  onIndex,
+}: {
+  items: { src: string; caption: string }[];
+  index: number | null;
+  onIndex: (i: number | null) => void;
+}) {
+  const { t } = useI18n();
+  const n = items.length;
+
+  useEffect(() => {
+    if (index === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onIndex(null);
+      if (e.key === "ArrowRight" && n > 1) onIndex((index + 1) % n);
+      if (e.key === "ArrowLeft" && n > 1) onIndex((index - 1 + n) % n);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [index, n, onIndex]);
+
+  const item = index !== null ? items[index] : null;
+
+  return (
+    <AnimatePresence>
+      {item && index !== null && (
+        <motion.div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={item.caption}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={() => onIndex(null)}
+        >
+          <button className="modal__close" onClick={() => onIndex(null)} aria-label={t.common.close} autoFocus>
+            <Close />
+          </button>
+          <figure className="lightbox__figure" onClick={(e) => e.stopPropagation()}>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={item.src}
+                src={item.src}
+                alt={item.caption}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease }}
+              />
+            </AnimatePresence>
+            <figcaption>
+              <span>{item.caption}</span>
+              <span className="num">
+                {String(index + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}
+              </span>
+            </figcaption>
+          </figure>
+          {n > 1 && (
+            <>
+              <button
+                className="round-btn lightbox__prev"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onIndex((index - 1 + n) % n);
+                }}
+                aria-label={t.project.prevPhoto}
+              >
+                <ArrowLeft />
+              </button>
+              <button
+                className="round-btn lightbox__next"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onIndex((index + 1) % n);
+                }}
+                aria-label={t.project.nextPhoto}
+              >
+                <ArrowRight />
+              </button>
+            </>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

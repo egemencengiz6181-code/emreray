@@ -7,6 +7,7 @@ import { Counter, ease, LineReveal, Parallax, Reveal } from "../components/Motio
 import { ProjectCard, ProjectModal } from "../components/ProjectCard";
 import { ProjectMap } from "../components/ProjectMap";
 import { cities, projectPlaces } from "../data/geo";
+import { alikahyaSlug } from "../data/projectsExtra";
 import type { Project } from "../data/types";
 import { useContent } from "../i18n/content";
 import { useI18n } from "../i18n/useLang";
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Latest />
       <Intro />
       <Numbers />
       <Marquee items={cityNames} label={t.marquee} />
@@ -159,6 +161,82 @@ function Hero() {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Son tamamlanan proje ---------------- */
+
+// Görseller şimdilik 1170 px'lik kaynaktan; ≥1920 px orijinaller gelince hero'ya taşınabilir.
+function Latest() {
+  const { t, L } = useI18n();
+  const { projects } = useContent();
+  const p = projects.find((x) => x.slug === alikahyaSlug);
+  const reduce = useReducedMotion();
+  const [slide, setSlide] = useState(0);
+  const slides = p?.gallery?.slice(0, 2) ?? [];
+  const run = p?.gallery?.[2];
+
+  useEffect(() => {
+    if (reduce || slides.length < 2) return;
+    const id = setInterval(() => setSlide((s) => (s + 1) % slides.length), 6000);
+    return () => clearInterval(id);
+  }, [reduce, slides.length]);
+
+  if (!p || slides.length === 0) return null;
+  const href = L.projects({ project: p.slug });
+
+  return (
+    <section className="section--tight latest">
+      <div className="container latest__grid">
+        <Reveal className="latest__banner">
+          {slides.map((g, i) => (
+            <motion.img
+              key={g.src}
+              src={g.src}
+              alt={g.caption}
+              initial={false}
+              animate={{ opacity: i === slide ? 1 : 0, scale: i === slide ? 1 : 1.04 }}
+              transition={{ duration: 1.4, ease }}
+              decoding="async"
+            />
+          ))}
+          <div className="latest__overlay">
+            <span className="eyebrow">{t.home.latestEyebrow}</span>
+            <h2 className="latest__title">{t.home.latestTitle}</h2>
+            <Link to={href} className="btn btn--signal">
+              {t.home.latestLink} <ArrowRight size={18} />
+            </Link>
+          </div>
+          {slides.length > 1 && (
+            <div className="latest__dots">
+              {slides.map((g, i) => (
+                <button
+                  key={g.src}
+                  aria-label={`${t.home.latestSlide} ${i + 1}`}
+                  aria-pressed={i === slide}
+                  onClick={() => setSlide(i)}
+                />
+              ))}
+            </div>
+          )}
+        </Reveal>
+
+        <Reveal delay={0.1} className="latest__side">
+          {run && (
+            <Link to={href} className="latest__run">
+              <img src={run.src} alt={run.caption} loading="lazy" decoding="async" />
+            </Link>
+          )}
+          <div className="latest__meta">
+            <span className="num">{t.home.latestDate}</span>
+            <span>{p.location}</span>
+          </div>
+          <h3 className="latest__subtitle">{t.home.latestRun}</h3>
+          <p className="muted">{t.home.latestText}</p>
+          <LinkArrow to={href}>{t.home.latestLink}</LinkArrow>
+        </Reveal>
       </div>
     </section>
   );

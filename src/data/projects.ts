@@ -1,7 +1,11 @@
-import { projects } from "./projects.generated";
-import type { ProjectCategory, ServiceSlug } from "./types";
+import { projects as generated } from "./projects.generated";
+import { newProjects, projectPatches } from "./projectsExtra";
+import type { Project, ProjectCategory, ServiceSlug } from "./types";
 
-export { projects };
+export const projects: Project[] = [
+  ...newProjects,
+  ...generated.map((p) => (projectPatches[p.slug] ? { ...p, ...projectPatches[p.slug] } : p)),
+];
 
 export const completedProjects = projects.filter((p) => p.status === "done");
 export const ongoingProjects = projects.filter((p) => p.status === "ongoing");
@@ -12,6 +16,7 @@ export const getProject = (slug?: string) => projects.find((p) => p.slug === slu
 
 /** Ana sayfa vitrini için elle seçilmiş, görsel olarak güçlü projeler. */
 export const featuredSlugs = [
+  "alikahya-stadyum-tramvay-hatti",
   "ankara-istanbul-hizli-tren-1-asama",
   "antalya-hafif-rayli-sistem-1-asama",
   "kayseri-bogazkopru-ulukisla-yenice-adana-toprakkale-hat-kesimine",

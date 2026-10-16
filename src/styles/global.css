@@ -1811,6 +1811,211 @@ html[data-header="shown"] .filters {
   background: var(--accent-2);
   box-shadow: 0 0 0 4px rgba(226, 145, 95, 0.25);
 }
+/* Anasayfa — son tamamlanan proje */
+.latest {
+  padding-top: clamp(48px, 6vw, 88px);
+}
+.latest__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(20px, 3vw, 44px);
+  align-items: stretch;
+}
+.latest__banner {
+  position: relative;
+  min-width: 0;
+  height: clamp(360px, 38vw, 540px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--ink);
+}
+.latest__banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.latest__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 18px;
+  padding: clamp(24px, 3.4vw, 48px);
+  color: #fff;
+  background: linear-gradient(90deg, rgba(13, 15, 19, 0.72) 0%, rgba(13, 15, 19, 0.25) 55%, rgba(13, 15, 19, 0) 80%),
+    linear-gradient(0deg, rgba(13, 15, 19, 0.55) 0%, rgba(13, 15, 19, 0) 50%);
+}
+.latest__overlay .eyebrow {
+  color: var(--accent-2);
+}
+.latest__title {
+  max-width: 15ch;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+.latest__dots {
+  position: absolute;
+  right: clamp(20px, 3vw, 40px);
+  bottom: clamp(24px, 3.4vw, 48px);
+  display: flex;
+  gap: 8px;
+}
+.latest__dots button {
+  width: 28px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s, width 0.3s;
+}
+.latest__dots button[aria-pressed="true"] {
+  width: 44px;
+  background: #fff;
+}
+.latest__side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.latest__run {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--mist-2);
+}
+.latest__run img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.latest__run:hover img {
+  transform: scale(1.05);
+}
+.latest__meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--muted);
+}
+.latest__meta .num {
+  color: var(--accent);
+}
+.latest__subtitle {
+  font-size: clamp(20px, 1.6vw, 24px);
+  letter-spacing: -0.02em;
+}
+@media (max-width: 960px) {
+  .latest__grid {
+    grid-template-columns: 1fr;
+  }
+  .latest__banner {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Proje galerisi + lightbox */
+.pgallery__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.pgallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+}
+.pgallery__thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--mist);
+}
+.pgallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease), opacity 0.3s;
+}
+.pgallery__thumb:hover img {
+  transform: scale(1.06);
+  opacity: 0.88;
+}
+.pgallery__thumb:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 72px clamp(16px, 7vw, 110px) 32px;
+  background: rgba(13, 15, 19, 0.94);
+}
+.lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+.lightbox__figure img {
+  display: block;
+  max-width: min(1100px, 100%);
+  max-height: calc(100svh - 170px);
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.lightbox__figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+}
+.lightbox .round-btn {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  border-color: var(--line-light);
+  color: #fff;
+  background: rgba(13, 15, 19, 0.4);
+}
+.lightbox .round-btn:hover {
+  background: #fff;
+  color: var(--graphite);
+}
+.lightbox__prev {
+  left: clamp(8px, 2vw, 32px);
+}
+.lightbox__next {
+  right: clamp(8px, 2vw, 32px);
+}
+@media (max-width: 600px) {
+  .lightbox .round-btn {
+    top: auto;
+    bottom: 20px;
+    translate: none;
+  }
+  .lightbox {
+    padding-bottom: 90px;
+  }
+}
 .modal__nav {
   display: flex;
   justify-content: space-between;

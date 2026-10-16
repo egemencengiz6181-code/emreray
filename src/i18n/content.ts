@@ -40,7 +40,16 @@ function build(lang: Lang) {
   }
   const proj: Project[] = projects.map((p) => {
     const t = projectsTextEn[p.slug];
-    return t ? { ...p, title: t.title, desc: t.desc, metric: t.metric } : p;
+    if (!t) return p;
+    return {
+      ...p,
+      title: t.title,
+      desc: t.desc,
+      metric: t.metric,
+      location: t.location ?? p.location,
+      period: t.period ?? p.period,
+      gallery: p.gallery?.map((g, i) => ({ ...g, caption: t.captions?.[i] ?? g.caption })),
+    };
   });
   return {
     company: { ...company, ...companyEn },

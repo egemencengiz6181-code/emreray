@@ -25,11 +25,17 @@ export default function Projects() {
   const [q, setQ] = useState(urlQ);
   const [view, setView] = useState<"grid" | "map">("grid");
   const [active, setActive] = useState<Project | null>(null);
+  const deepSlug = params.get(qp.project);
   useTitle(status === "ongoing" ? t.nav.ongoing : t.nav.projects, t.projects.lead);
 
   useEffect(() => setQ(urlQ), [urlQ]);
 
   const base = status === "ongoing" ? ongoing : completed;
+
+  // ?proje=<slug> bağlantısı (ör. anasayfa banner'ı) ilgili projenin detayını doğrudan açar.
+  useEffect(() => {
+    if (deepSlug) setActive(base.find((p) => p.slug === deepSlug) ?? null);
+  }, [deepSlug, base]);
 
   const counts = useMemo(
     () => Object.fromEntries(filterGroups.map((g) => [g.key, base.filter((p) => g.match(p.cat)).length])),
@@ -156,7 +162,15 @@ export default function Projects() {
         </div>
       </section>
 
-      <ProjectModal project={active} list={list} onClose={() => setActive(null)} onChange={setActive} />
+      <ProjectModal
+        project={active}
+        list={list}
+        onClose={() => {
+          setActive(null);
+          if (deepSlug) set({ [qp.project]: null });
+        }}
+        onChange={setActive}
+      />
       <CtaBand />
     </>
   );

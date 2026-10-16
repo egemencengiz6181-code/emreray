@@ -1,5 +1,45 @@
 // English titles/descriptions for projects, keyed by the project slug in projects.generated.ts.
-export const projectsTextEn: Record<string, { title: string; desc: string; metric: string | null }> = {
+export const projectsTextEn: Record<
+  string,
+  { title: string; desc: string; metric: string | null; location?: string; period?: string; captions?: string[] }
+> = {
+  "alikahya-stadyum-tramvay-hatti": {
+    title: "Alikahya Stadium Tram Line Construction Works",
+    desc: "Tram line construction works — Sigma – Emreray Joint Venture",
+    metric: null,
+    location: "Alikahya – Kartepe, Kocaeli",
+    period: "Contract 29.11.2023 — completed September 2026",
+    captions: [
+      "Alikahya Stadium Tram Line — Kartepe route",
+      "Kartepe tram line — general view",
+      "Kartepe line opening run",
+    ],
+  },
+  "eskisehir-tramvay-deposu-insaati": {
+    title: "Eskişehir Tram Depot Construction",
+    desc: "Construction of the depot maintenance hall and administrative building; steel roof system; maintenance pits and roof-access platforms; depot yard tracks and catenary system",
+    metric: null,
+    captions: [
+      "Maintenance hall steel roof erection",
+      "Administrative building and maintenance hall — shell construction",
+      "Maintenance hall columns and roof system",
+      "Administrative building reinforced-concrete frame",
+      "Administrative building façade works and catenary line",
+      "Maintenance hall entrance doors and depot tracks",
+      "Depot yard — catenary system and trams",
+      "Maintenance hall interior — roof-access platforms",
+      "Roof-access platform and maintenance track",
+      "Maintenance pit and platforms",
+      "Tram in the maintenance hall",
+      "Maintenance hall — tram front view",
+    ],
+  },
+  "ibb-tramvay-deposu": {
+    title: "İBB Tram Depot",
+    desc: "",
+    metric: null,
+    captions: ["İBB Tram Depot — building façade and depot tracks"],
+  },
   "ankara-esenkent-sincan-yuksek-hizli-tren-projesi": {
     title: "Ankara (Esenkent–Sincan) High-Speed Rail Project",
     desc: "Infrastructure, superstructure and electrification construction works (25 kV AC, 250 km/h, 32 km double track)",
@@ -249,6 +289,8 @@ export const projectsTextEn: Record<string, { title: string; desc: string; metri
     title: "Construction of the TCDD Halkapınar Station Building as Part of the İzmir Metro Works",
     desc: "",
     metric: null,
+    location: "Halkapınar, İzmir",
+    captions: ["İzmir Halkapınar Station Building"],
   },
   "ehrs-projesi": {
     title: "EHRS Project",

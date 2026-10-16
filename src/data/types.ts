@@ -27,6 +27,13 @@ export interface Project {
   status: "done" | "ongoing";
   metric: string | null;
   image: string;
+  /** Proje detayında lightbox ile açılan galeri; sıra inşaat sürecini kronolojik anlatır. */
+  gallery?: { src: string; caption: string }[];
+  /** Harita şehir adı yerine gösterilecek konum (ör. "Alikahya – Kartepe, Kocaeli"). */
+  location?: string;
+  employer?: string;
+  contractor?: string;
+  period?: string;
 }
 
 export interface Service {

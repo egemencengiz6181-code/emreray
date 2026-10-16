@@ -51,8 +51,8 @@ const seg = {
 
 /** Proje sayfası sorgu parametreleri, dile göre. */
 export const projectQuery = {
-  tr: { status: "durum", ongoing: "devam-eden", category: "kategori", area: "alan", q: "ara" },
-  en: { status: "status", ongoing: "ongoing", category: "category", area: "area", q: "q" },
+  tr: { status: "durum", ongoing: "devam-eden", category: "kategori", area: "alan", q: "ara", project: "proje" },
+  en: { status: "status", ongoing: "ongoing", category: "category", area: "area", q: "q", project: "project" },
 } as const;
 
 export function links(lang: Lang) {
@@ -65,12 +65,13 @@ export function links(lang: Lang) {
     policy: (id: string) => `${pre}/${s.about}/${lang === "en" ? policyEn[id] ?? id : id}`,
     services: () => `${pre}/${s.services}`,
     service: (id: ServiceSlug) => `${pre}/${s.services}/${lang === "en" ? serviceEn[id] : id}`,
-    projects: (o: { ongoing?: boolean; category?: string; area?: ServiceSlug; q?: string } = {}) => {
+    projects: (o: { ongoing?: boolean; category?: string; area?: ServiceSlug; q?: string; project?: string } = {}) => {
       const p = new URLSearchParams();
       if (o.ongoing) p.set(qp.status, qp.ongoing);
       if (o.category) p.set(qp.category, o.category);
       if (o.area) p.set(qp.area, o.area);
       if (o.q) p.set(qp.q, o.q);
+      if (o.project) p.set(qp.project, o.project);
       const qs = p.toString();
       return `${pre}/${s.projects}${qs ? `?${qs}` : ""}`;
     },
