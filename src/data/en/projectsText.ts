@@ -8,7 +8,6 @@ export const projectsTextEn: Record<
     desc: "Tram line construction works — Sigma – Emreray Joint Venture",
     metric: null,
     location: "Alikahya – Kartepe, Kocaeli",
-    period: "Contract 29.11.2023 — completed September 2026",
     captions: [
       "Alikahya Stadium Tram Line — Kartepe route",
       "Kartepe tram line — general view",

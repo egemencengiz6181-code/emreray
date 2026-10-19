@@ -230,7 +230,6 @@ function Latest() {
             </Link>
           )}
           <div className="latest__meta">
-            <span className="num">{t.home.latestDate}</span>
             <span>{p.location}</span>
           </div>
           <h3 className="latest__subtitle">{t.home.latestRun}</h3>

@@ -92,10 +92,9 @@ const tr = {
     latestEyebrow: "Son Tamamlanan Proje",
     latestTitle: "Alikahya Stadyum Tramvay Hattı tamamlandı",
     latestText:
-      "Sigma – Emreray Adi Ortaklığı tarafından yapımı üstlenilen Kartepe güzergâhındaki Alikahya Stadyum Tramvay Hattı, Eylül 2026 itibarıyla tamamlanarak hizmete girdi.",
+      "Sigma – Emreray Adi Ortaklığı tarafından yapımı üstlenilen Kartepe güzergâhındaki Alikahya Stadyum Tramvay Hattı tamamlanarak hizmete girdi.",
     latestLink: "Projeyi inceleyin",
     latestRun: "Kartepe hattı açılış seferi",
-    latestDate: "Eylül 2026",
     latestSlide: "Görsel",
     introEyebrow: "Hakkımızda",
     since: "yılından beri sahada",
@@ -447,10 +446,9 @@ const en: UI = {
     latestEyebrow: "Latest Completed Project",
     latestTitle: "Alikahya Stadium Tram Line completed",
     latestText:
-      "Built by the Sigma – Emreray Joint Venture, the Alikahya Stadium Tram Line on the Kartepe route was completed and entered service in September 2026.",
+      "Built by the Sigma – Emreray Joint Venture, the Alikahya Stadium Tram Line on the Kartepe route has been completed and entered service.",
     latestLink: "View the project",
     latestRun: "Kartepe line opening run",
-    latestDate: "September 2026",
     latestSlide: "Image",
     introEyebrow: "About Us",
     since: "founded — and in the field ever since",

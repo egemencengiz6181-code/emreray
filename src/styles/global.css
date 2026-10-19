@@ -1928,9 +1928,6 @@ html[data-header="shown"] .filters {
   font-size: 14px;
   color: var(--muted);
 }
-.latest__meta .num {
-  color: var(--accent);
-}
 .latest__subtitle {
   font-size: clamp(20px, 1.6vw, 24px);
   letter-spacing: -0.02em;

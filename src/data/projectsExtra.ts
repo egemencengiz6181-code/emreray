@@ -28,7 +28,6 @@ export const newProjects: Project[] = [
     gallery: alikahyaGallery,
     location: "Alikahya – Kartepe, Kocaeli",
     contractor: "Sigma İnş. ve Turz. İşl. Tic. A.Ş. – Emreray Enerji İnş. San. ve Tic. A.Ş. Adi Ortaklığı",
-    period: "Sözleşme 29.11.2023 — tamamlanma Eylül 2026",
   },
   {
     slug: "eskisehir-tramvay-deposu-insaati",
