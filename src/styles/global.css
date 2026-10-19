@@ -431,9 +431,6 @@ p {
 .header__logo .logo-swap {
   position: relative;
   display: block;
-  height: 54px;
-}
-.header__logo .logo-swap--tagline {
   height: 72px;
 }
 .logo-swap img {
@@ -705,9 +702,6 @@ li:focus-within > .mega {
     --header-h: 72px;
   }
   .header__logo .logo-swap {
-    height: 44px;
-  }
-  .header__logo .logo-swap--tagline {
     height: 58px;
   }
   .menu-btn__label {
