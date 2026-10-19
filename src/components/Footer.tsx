@@ -14,7 +14,7 @@ export function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
-            <Link to={L.home()} aria-label="EMRERAY" style={{ width: 170 }}>
+            <Link to={L.home()} aria-label="EMRERAY" style={{ width: 200 }}>
               <LogoStacked />
             </Link>
             <p>{t.footer.about}</p>
