@@ -433,6 +433,9 @@ p {
   display: block;
   height: 54px;
 }
+.header__logo .logo-swap--tagline {
+  height: 72px;
+}
 .logo-swap img {
   display: block;
   height: 100%;
@@ -703,6 +706,9 @@ li:focus-within > .mega {
   }
   .header__logo .logo-swap {
     height: 44px;
+  }
+  .header__logo .logo-swap--tagline {
+    height: 58px;
   }
   .menu-btn__label {
     display: none;

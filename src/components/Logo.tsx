@@ -5,12 +5,14 @@
 
 const SRC = "/media/brand";
 
-/** Header logosu — sloganısız; zemine göre açık/koyu sürüm CSS ile değişir. */
-export function LogoHorizontal({ className }: { className?: string }) {
+/** Header logosu — zemine göre açık/koyu sürüm CSS ile değişir; `tagline` ile "Go ahead" sloganı eklenir. */
+export function LogoHorizontal({ className, tagline = false }: { className?: string; tagline?: boolean }) {
+  const name = tagline ? "logo" : "logo-compact";
+  const h = tagline ? 495 : 344;
   return (
-    <span className={["logo-swap", className].filter(Boolean).join(" ")}>
-      <img className="logo-swap__light" src={`${SRC}/logo-compact-light.png`} alt="EMRERAY" width={1097} height={344} />
-      <img className="logo-swap__dark" src={`${SRC}/logo-compact.png`} alt="" aria-hidden="true" width={1097} height={344} />
+    <span className={["logo-swap", tagline && "logo-swap--tagline", className].filter(Boolean).join(" ")}>
+      <img className="logo-swap__light" src={`${SRC}/${name}-light.png`} alt="EMRERAY" width={1097} height={h} />
+      <img className="logo-swap__dark" src={`${SRC}/${name}.png`} alt="" aria-hidden="true" width={1097} height={h} />
     </span>
   );
 }

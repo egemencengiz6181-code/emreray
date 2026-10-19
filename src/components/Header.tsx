@@ -113,7 +113,7 @@ export function Header() {
       <header className={cls}>
         <div className="container header__inner">
           <Link to={L.home()} className="header__logo" aria-label="EMRERAY">
-            <LogoHorizontal />
+            <LogoHorizontal tagline={pathname === L.home()} />
           </Link>
 
           <nav className="header__nav" aria-label={t.common.mainMenu}>
