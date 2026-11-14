@@ -5,14 +5,44 @@ export const projectsTextEn: Record<
 > = {
   "alikahya-stadyum-tramvay-hatti": {
     title: "Alikahya Stadium Tram Line Construction Works",
-    desc: "Tram line construction works — Sigma – Emreray Joint Venture",
-    metric: null,
-    location: "Alikahya – Kartepe, Kocaeli",
+    desc: "1.4 km extension of the Akçaray tram network's Alikahya Stadium line to Kartepe; track superstructure, catenary and stop works. With the new Dumlupınar and Kartepe stops the network reached 18.7 km and 29 stops; platforms at the 15 existing stations were lengthened for double-unit operation (600 passengers per trip).",
+    metric: "1.4 km",
+    location: "İzmit – Kartepe, Kocaeli",
     captions: [
       "Alikahya Stadium Tram Line — Kartepe route",
       "Kartepe tram line — general view",
       "Kartepe line opening run",
     ],
+  },
+  "kurucesme-tramvay-hatti": {
+    title: "Kuruçeşme Tram Line",
+    desc: "Tram line construction works",
+    metric: null,
+    location: "Kuruçeşme, İzmit – Kocaeli",
+  },
+  "elazig-genc-elektrifikasyon-sistemleri": {
+    title: "Elazığ – Genç Electrification Systems Construction Works",
+    desc: "Supply, installation and commissioning of the electrification systems for the 133 km line section.",
+    metric: "133 km",
+    location: "Elazığ – Bingöl (Genç)",
+  },
+  "misir-yuksek-hizli-demiryolu-yesil-hat-katener": {
+    title: "Egypt High-Speed Railway Green Line – Catenary (OCS) Installation Works",
+    desc: "Installation of the catenary system along a 512 km section of the Green Line. The 660 km, 21-station Green Line runs from Ain Sokhna on the Red Sea to Alexandria and Marsa Matruh on the Mediterranean coast and will be served by 250 km/h trains.",
+    metric: "512 km",
+    location: "Egypt",
+  },
+  "tiflis-tramvay-hatti-didi-digomi-didube": {
+    title: "Tbilisi Tram Line (Didi Digomi – Didube) Design and Construction Works",
+    desc: "An approx. 7.5 km tram line with 11 stops, running from micro-districts 3 and 4 of Didi Digomi to Didube metro station. The work proceeds in three stages — concept design, detailed engineering and construction; the depot in scope will maintain 11 trams. The contract was signed on 7 September 2026.",
+    metric: "7.5 km",
+    location: "Tbilisi, Georgia",
+  },
+  "open-net-gurcistan-fiber-optik-altyapi-faz-4": {
+    title: "Open Net Georgia Fibre-Optic Infrastructure Project (Phase 4)",
+    desc: "Civil works for 250 km of passive fibre-optic infrastructure. The programme aims to connect around 1,000 remote rural settlements to a regional fibre network, operated as open-access infrastructure offering wholesale services to operators only.",
+    metric: "250 km",
+    location: "Tsalka – Akhalkalaki – Akhaltsikhe, Georgia",
   },
   "eskisehir-tramvay-deposu-insaati": {
     title: "Eskişehir Tram Depot Construction",

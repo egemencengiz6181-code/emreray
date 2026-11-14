@@ -1,9 +1,10 @@
 import { projects as generated } from "./projects.generated";
-import { newProjects, projectPatches } from "./projectsExtra";
+import { newProjects, ongoingNewProjects, projectPatches } from "./projectsExtra";
 import type { Project, ProjectCategory, ServiceSlug } from "./types";
 
 export const projects: Project[] = [
   ...newProjects,
+  ...ongoingNewProjects,
   ...generated.map((p) => (projectPatches[p.slug] ? { ...p, ...projectPatches[p.slug] } : p)),
 ];
 
