@@ -25,6 +25,15 @@ export const projectsTextEn: Record<
     desc: "Supply, installation and commissioning of the electrification systems for the 133 km line section.",
     metric: "133 km",
     location: "Elazığ – Bingöl (Genç)",
+    captions: [
+      "Site works — portal masts and catenary cross-girders",
+      "Site works — EMRERAY catenary vehicle exiting the tunnel",
+      "Site works — placing the transformer kiosk and tunnel portal",
+      "Site works — concrete pouring at the tunnel portal with a rail-mounted mixer",
+      "Site works — trackside mast foundation and anchor bolts",
+      "Site works — foundation concrete pouring at the tunnel approach",
+      "Site works — lattice catenary masts",
+    ],
   },
   "misir-yuksek-hizli-demiryolu-yesil-hat-katener": {
     title: "Egypt High-Speed Railway Green Line – Catenary (OCS) Installation Works",

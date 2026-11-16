@@ -93,9 +93,19 @@ export const ongoingNewProjects: Project[] = [
     service: "ana-hat",
     status: "ongoing",
     metric: "133 km",
-    image: "/media/2024-12-20160504-101310-scaled.webp",
+    image: `${dir}/elazig-genc-elektrifikasyon-sistemleri/elazig-genc-01-portal-direkleri-ve-katener.webp`,
     location: "Elazığ – Bingöl (Genç)",
     employer: "TCDD Genel Müdürlüğü",
+    // Saha surveyinden sonra yapılan saha imalatları (16.11.2026).
+    gallery: g("elazig-genc-elektrifikasyon-sistemleri", [
+      ["elazig-genc-01-portal-direkleri-ve-katener", "Saha imalatları — portal direkleri ve katener traversleri"],
+      ["elazig-genc-02-tunel-cikisinda-katener-araci", "Saha imalatları — tünel çıkışında EMRERAY katener aracı"],
+      ["elazig-genc-03-trafo-kosku-montaji-ve-tunel", "Saha imalatları — trafo köşkü yerleştirme ve tünel ağzı"],
+      ["elazig-genc-04-tunel-agzinda-beton-dokumu", "Saha imalatları — tünel ağzında raylı mikserle beton dökümü"],
+      ["elazig-genc-05-direk-temeli-ankraj-bulonlari", "Saha imalatları — hat kenarında direk temeli ve ankraj bulonları"],
+      ["elazig-genc-06-tunel-yaklasiminda-katener-araci", "Saha imalatları — tünel yaklaşımında temel betonu dökümü"],
+      ["elazig-genc-07-kafes-katener-direkleri", "Saha imalatları — kafes katener direkleri"],
+    ]),
   },
   {
     slug: "misir-yuksek-hizli-demiryolu-yesil-hat-katener",
