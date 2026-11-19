@@ -5,7 +5,7 @@ export const projectsTextEn: Record<
 > = {
   "alikahya-stadyum-tramvay-hatti": {
     title: "Alikahya Stadium Tram Line Construction Works",
-    desc: "1.4 km extension of the Akçaray tram network's Alikahya Stadium line to Kartepe; track superstructure, catenary and stop works. With the new Dumlupınar and Kartepe stops the network reached 18.7 km and 29 stops; platforms at the 15 existing stations were lengthened for double-unit operation (600 passengers per trip).",
+    desc: "1.4 km extension of the Akçaray tram network's Alikahya Stadium line to Kartepe; track superstructure, catenary, stop and depot works. With the new Dumlupınar and Kartepe stops the network reached 18.7 km and 29 stops; platforms at the 15 existing stations were lengthened for double-unit operation (600 passengers per trip).",
     metric: "1.4 km",
     location: "İzmit – Kartepe, Kocaeli",
     captions: [

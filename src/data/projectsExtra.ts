@@ -19,7 +19,7 @@ export const newProjects: Project[] = [
   {
     slug: alikahyaSlug,
     title: "Alikahya Stadyum Tramvay Hattı Yapım İşi",
-    desc: "Akçaray tramvay ağının Alikahya Stadyum hattının Kartepe'ye 1,4 km uzatılması; ray üstyapı, katener ve durak işleri. Dumlupınar ve Kartepe duraklarıyla ağ 18,7 km'ye ve 29 durağa ulaştı; mevcut hattaki 15 istasyonda peronlar çift dizi işletmeye göre uzatıldı (tek seferde 600 yolcu).",
+    desc: "Akçaray tramvay ağının Alikahya Stadyum hattının Kartepe'ye 1,4 km uzatılması; ray üstyapı, katener, durak ve depo işleri. Dumlupınar ve Kartepe duraklarıyla ağ 18,7 km'ye ve 29 durağa ulaştı; mevcut hattaki 15 istasyonda peronlar çift dizi işletmeye göre uzatıldı (tek seferde 600 yolcu).",
     cat: "hafif-rayli",
     service: "hafif-rayli",
     status: "done",
