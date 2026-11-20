@@ -25,6 +25,7 @@ export default function Home() {
     <>
       <Hero />
       <Latest />
+      <Film />
       <Intro />
       <Numbers />
       <Marquee items={cityNames} label={t.marquee} />
@@ -242,6 +243,56 @@ function Latest() {
 }
 
 /* ---------------- Tanıtım ---------------- */
+
+/* ---------------- Tanıtım filmi ---------------- */
+
+// Film ~70 MB: tıklanana kadar hiçbir şey indirilmez (preload="none"), yalnızca poster görünür.
+function Film() {
+  const { t } = useI18n();
+  const video = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
+
+  const start = () => {
+    setStarted(true);
+    const v = video.current;
+    if (!v) return;
+    v.muted = false;
+    v.play().catch(() => {});
+  };
+
+  return (
+    <section className="film">
+      <div className="container">
+        <Reveal y={16}>
+          <span className="eyebrow">{t.home.filmEyebrow}</span>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <div className={`film__frame${started ? " is-playing" : ""}`}>
+            <video
+              ref={video}
+              src="/media/film/tanitim.mp4"
+              poster="/media/film/poster.jpg"
+              preload="none"
+              playsInline
+              controls={started}
+            />
+            {!started && (
+              <button className="film__cover" onClick={start} aria-label={t.home.filmPlay}>
+                <span className="film__play" aria-hidden>
+                  <Play size={28} />
+                </span>
+                <span className="film__label">
+                  <b>{t.home.filmTitle}</b>
+                  <span>{t.home.filmPlay}</span>
+                </span>
+              </button>
+            )}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 function Word({ word, i, total, progress }: { word: string; i: number; total: number; progress: MotionValue<number> }) {
   const start = i / total;

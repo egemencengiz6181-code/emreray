@@ -1109,6 +1109,77 @@ li:focus-within > .mega {
    Ana sayfa: tanıtım
    ============================================================ */
 
+/* ---------- Tanıtım filmi ---------- */
+
+.film {
+  padding-top: clamp(64px, 8vw, 120px);
+}
+.film .eyebrow {
+  margin-bottom: 24px;
+}
+.film__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink);
+}
+.film__frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.film__frame.is-playing video {
+  object-fit: contain;
+}
+.film__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: clamp(20px, 3.5vw, 48px);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  background: linear-gradient(to top, rgba(13, 15, 19, 0.7), rgba(13, 15, 19, 0) 55%);
+}
+.film__play {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: clamp(56px, 7vw, 88px);
+  height: clamp(56px, 7vw, 88px);
+  border-radius: 50%;
+  background: var(--accent);
+  transition: transform 0.4s var(--ease), background 0.25s;
+}
+.film__play svg {
+  margin-left: 4px;
+}
+.film__cover:hover .film__play,
+.film__cover:focus-visible .film__play {
+  transform: scale(1.08);
+  background: var(--accent-2);
+}
+.film__label {
+  display: grid;
+  gap: 4px;
+}
+.film__label b {
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.4vw, 34px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+.film__label span {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
 .intro {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;

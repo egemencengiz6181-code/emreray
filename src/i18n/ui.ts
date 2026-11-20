@@ -89,6 +89,9 @@ const tr = {
     lead: "Yüksek hızlı tren hatlarından şehir içi tramvaylara, sinyalizasyondan 154 kV trafo merkezlerine — Türkiye'nin raylı sistem ve enerji altyapısını otuz yılı aşkın deneyimle inşa ediyoruz.",
     pause: "Videoyu durdur",
     play: "Videoyu oynat",
+    filmEyebrow: "Tanıtım Filmi",
+    filmTitle: "Emreray'ı yakından tanıyın",
+    filmPlay: "Filmi izle",
     latestEyebrow: "Son Tamamlanan Proje",
     latestTitle: "Alikahya Stadyum Tramvay Hattı tamamlandı",
     latestText:
@@ -443,6 +446,9 @@ const en: UI = {
     lead: "From high-speed rail lines to city trams, from signalling to 154 kV substations — we have been building Türkiye's rail and energy infrastructure for more than thirty years.",
     pause: "Pause video",
     play: "Play video",
+    filmEyebrow: "Corporate Film",
+    filmTitle: "Get to know Emreray",
+    filmPlay: "Watch the film",
     latestEyebrow: "Latest Completed Project",
     latestTitle: "Alikahya Stadium Tram Line completed",
     latestText:
